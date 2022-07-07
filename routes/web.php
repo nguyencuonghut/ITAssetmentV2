@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDepartmentsController;
 use App\Http\Controllers\AdminUsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,5 +30,8 @@ Route::name('admin.')->prefix('admin')->group(function() {
     Route::group(['middleware'=>'auth'], function() {
         Route::get('users/data', [AdminUsersController::class, 'anyData'])->name('users.data');
         Route::resource('users', AdminUsersController::class);
+
+        Route::get('departments/data', [AdminDepartmentsController::class, 'anyData'])->name('departments.data');
+        Route::resource('departments', AdminDepartmentsController::class);
     });
 });
