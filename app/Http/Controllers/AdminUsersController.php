@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Datatables;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminUsersController extends Controller
 {
@@ -25,7 +27,7 @@ class AdminUsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -36,7 +38,31 @@ class AdminUsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed|min:6',
+        ];
+        $messages = [
+            'name.required' => 'Bạn phải nhập tên.',
+            'name.max' => 'Tên dài quá 255 ký tự.',
+            'email.required' => 'Bạn phải nhập địa chỉ email.',
+            'email.email' => 'Email sai định dạng.',
+            'email.unique' => 'Email đã tồn tại',
+            'password.required' => 'Bạn phải nhập mật khẩu.',
+            'password.min' => 'Mật khẩu phải dài ít nhất 6 ký tự.',
+            'password.confirmed' => 'Mật khẩu không khớp.',
+        ];
+        $request->validate($rules,$messages);
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        Alert::toast('Tạo người dùng thành công!', 'success', 'top-right');
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -47,7 +73,7 @@ class AdminUsersController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.users.index');
     }
 
     /**
@@ -58,7 +84,8 @@ class AdminUsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('admin.users.edit', ['user' => $user]);
     }
 
     /**
@@ -70,7 +97,28 @@ class AdminUsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+        ];
+        $messages = [
+            'name.required' => 'Bạn phải nhập tên.',
+            'name.max' => 'Tên dài quá 255 ký tự.',
+            'email.required' => 'Bạn phải nhập địa chỉ email.',
+            'email.email' => 'Email sai định dạng.',
+        ];
+        $request->validate($rules,$messages);
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if($request->password
+        && $request->password == $request->password_confirmation){
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+
+        Alert::toast('Cập nhật thông tin thành công!', 'success', 'top-right');
+        return view('admin.users.index');
     }
 
     /**
@@ -81,7 +129,10 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->destroy($id);
+        Alert::toast('Xóa người dùng thành công!', 'success', 'top-right');
+        return redirect()->route('admin.users.index');
     }
 
 

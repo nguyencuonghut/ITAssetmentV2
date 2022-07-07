@@ -9,30 +9,39 @@
   <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endpush
 
-@extends('layouts.master')
+@extends('layouts.base')
 @section('content')
 <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Tất cả người dùng</h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                        <h3 class="card-title">Tất cả người dùng</h3>
-                        </div>
-                        <!-- /.card-header -->
                         <div class="card-body">
-                        <table id="users-table" class="table table-bordered table-striped">
-                            <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>Tên</th>
-                                <th>Email</th>
-                                <th>Thao tác</th>
-                            </tr>
-                            </thead>
-                        </table>
+                            <a href="{{ route('admin.users.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Tạo mới</a>
+                            <table id="users-table" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên</th>
+                                    <th>Email</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                                </thead>
+                            </table>
                         </div>
                     </div>
                 </div>
