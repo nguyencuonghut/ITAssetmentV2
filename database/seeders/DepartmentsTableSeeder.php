@@ -109,11 +109,17 @@ class DepartmentsTableSeeder extends Seeder
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ),
-
             12 =>
                 array (
                     'id' => 13,
                     'name' => 'Quản Lý Chất Lượng',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ),
+            13 =>
+                array (
+                    'id' => 14,
+                    'name' => 'Bảo Trì',
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ),

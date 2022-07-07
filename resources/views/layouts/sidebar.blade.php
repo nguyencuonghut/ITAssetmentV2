@@ -37,7 +37,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link {{ Request::is('admin/areas') ? 'active' : '' }}">
+            <a href="{{ route('admin.areas.index') }}" class="nav-link {{ Request::is('admin/areas') ? 'active' : '' }}">
               <i class="nav-icon fas fa-map-marker-alt"></i>
               <p>Vị trí</p>
             </a>

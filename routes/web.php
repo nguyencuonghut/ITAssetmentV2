@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminAreasController;
 use App\Http\Controllers\AdminDepartmentsController;
 use App\Http\Controllers\AdminUsersController;
 use Illuminate\Support\Facades\Route;
@@ -33,5 +34,8 @@ Route::name('admin.')->prefix('admin')->group(function() {
 
         Route::get('departments/data', [AdminDepartmentsController::class, 'anyData'])->name('departments.data');
         Route::resource('departments', AdminDepartmentsController::class);
+
+        Route::get('areas/data', [AdminAreasController::class, 'anyData'])->name('areas.data');
+        Route::resource('areas', AdminAreasController::class);
     });
 });
