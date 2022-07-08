@@ -38,7 +38,7 @@
                                     <th>STT</th>
                                     <th>Tên</th>
                                     <th>Email</th>
-                                    <th>Thao tác</th>
+                                    <th style="width: 12%;">Thao tác</th>
                                 </tr>
                                 </thead>
                             </table>
@@ -77,7 +77,7 @@
 <script>
     $(function () {
       $("#users-table").DataTable({
-        "responsive": true, "lengthChange": true, "autoWidth": true,
+        "responsive": true, "lengthChange": false, "autoWidth": false,
         buttons: [
             {
                 extend: 'copy',

@@ -1,5 +1,5 @@
 @section('title')
-{{ 'Vị trí' }}
+{{ 'Nhà cung cấp' }}
 @endsection
 
 @push('styles')
@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Tất cả vị trí</h1>
+                    <h1 class="m-0">Tất cả nhà cung cấp</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -31,12 +31,14 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ route('admin.areas.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Tạo mới</a>
-                            <table id="areas-table" class="table table-bordered table-striped">
+                            <a href="{{ route('admin.suppliers.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Tạo mới</a>
+                            <table id="suppliers-table" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
                                     <th>STT</th>
                                     <th>Tên</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Số di động</th>
                                     <th style="width: 12%;">Thao tác</th>
                                 </tr>
                                 </thead>
@@ -75,7 +77,7 @@
 
 <script>
     $(function () {
-      $("#areas-table").DataTable({
+      $("#suppliers-table").DataTable({
         "responsive": true, "lengthChange": false, "autoWidth": false,
         buttons: [
             {
@@ -89,7 +91,7 @@
                 extend: 'csv',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1]
+                    columns: [0,1,2]
                 }
 
             },
@@ -97,39 +99,41 @@
                 extend: 'excel',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1]
+                    columns: [0,1,2]
                 }
             },
             {
                 extend: 'pdf',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1]
+                    columns: [0,1,2]
                 }
             },
             {
                 extend: 'print',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1]
+                    columns: [0,1,2]
                 }
             },
             {
                 extend: 'colvis',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1]
+                    columns: [0,1,2]
                 }
             }
         ],
         dom: 'Blfrtip',
-        ajax: ' {!! route('admin.areas.data') !!}',
+        ajax: ' {!! route('admin.suppliers.data') !!}',
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'name', name: 'name'},
+            {data: 'address', name: 'address'},
+            {data: 'mobile', name: 'mobile'},
             {data: 'actions', name: 'actions', orderable: false, searchable: false},
        ]
-      }).buttons().container().appendTo('#areas-table_wrapper .col-md-6:eq(0)');
+      }).buttons().container().appendTo('#suppliers-table_wrapper .col-md-6:eq(0)');
     });
 </script>
 @endpush

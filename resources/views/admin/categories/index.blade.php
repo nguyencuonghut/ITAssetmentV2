@@ -77,7 +77,7 @@
 <script>
     $(function () {
       $("#categories-table").DataTable({
-        "responsive": true, "lengthChange": true, "autoWidth": true,
+        "responsive": true, "lengthChange": false, "autoWidth": false,
         buttons: [
             {
                 extend: 'copy',

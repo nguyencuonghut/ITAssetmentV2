@@ -25,19 +25,19 @@
 
           <li class="nav-header">QUẢN TRỊ</li>
           <li class="nav-item">
-            <a href="{{ route('admin.users.index') }}" class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}">
+            <a href="{{ route('admin.users.index') }}" class="nav-link {{ Request::is('admin/users*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-users"></i>
               <p>Người dùng</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.departments.index') }}" class="nav-link {{ Request::is('admin/departments') ? 'active' : '' }}">
+            <a href="{{ route('admin.departments.index') }}" class="nav-link {{ Request::is('admin/departments*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-building"></i>
               <p>Phòng ban</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.areas.index') }}" class="nav-link {{ Request::is('admin/areas') ? 'active' : '' }}">
+            <a href="{{ route('admin.areas.index') }}" class="nav-link {{ Request::is('admin/areas*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-map-marker-alt"></i>
               <p>Vị trí</p>
             </a>
@@ -48,6 +48,18 @@
             <a href="{{ route('admin.categories.index') }}" class="nav-link {{ Request::is('admin/categories*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-clipboard-list"></i>
               <p>Danh mục</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.manufacturers.index') }}" class="nav-link {{ Request::is('admin/manufacturers*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-tag"></i>
+              <p>Hãng sản xuất</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.suppliers.index') }}" class="nav-link {{ Request::is('admin/suppliers*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-truck"></i>
+              <p>Nhà cung cấp</p>
             </a>
           </li>
         </ul>

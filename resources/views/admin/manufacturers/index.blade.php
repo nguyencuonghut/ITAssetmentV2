@@ -1,5 +1,5 @@
 @section('title')
-{{ 'Vị trí' }}
+{{ 'Hãng sản xuất' }}
 @endsection
 
 @push('styles')
@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Tất cả vị trí</h1>
+                    <h1 class="m-0">Tất cả hãng sản xuất</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -31,8 +31,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ route('admin.areas.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Tạo mới</a>
-                            <table id="areas-table" class="table table-bordered table-striped">
+                            <a href="{{ route('admin.manufacturers.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Tạo mới</a>
+                            <table id="manufacturers-table" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
                                     <th>STT</th>
@@ -75,7 +75,7 @@
 
 <script>
     $(function () {
-      $("#areas-table").DataTable({
+      $("#manufacturers-table").DataTable({
         "responsive": true, "lengthChange": false, "autoWidth": false,
         buttons: [
             {
@@ -123,13 +123,13 @@
             }
         ],
         dom: 'Blfrtip',
-        ajax: ' {!! route('admin.areas.data') !!}',
+        ajax: ' {!! route('admin.manufacturers.data') !!}',
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'name', name: 'name'},
             {data: 'actions', name: 'actions', orderable: false, searchable: false},
        ]
-      }).buttons().container().appendTo('#areas-table_wrapper .col-md-6:eq(0)');
+      }).buttons().container().appendTo('#manufacturers-table_wrapper .col-md-6:eq(0)');
     });
 </script>
 @endpush

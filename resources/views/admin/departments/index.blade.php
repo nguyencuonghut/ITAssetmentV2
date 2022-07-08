@@ -37,7 +37,7 @@
                                 <tr>
                                     <th>STT</th>
                                     <th>Tên</th>
-                                    <th>Thao tác</th>
+                                    <th style="width: 12%;">Thao tác</th>
                                 </tr>
                                 </thead>
                             </table>
@@ -76,7 +76,7 @@
 <script>
     $(function () {
       $("#departments-table").DataTable({
-        "responsive": true, "lengthChange": true, "autoWidth": true,
+        "responsive": true, "lengthChange": false, "autoWidth": false,
         buttons: [
             {
                 extend: 'copy',

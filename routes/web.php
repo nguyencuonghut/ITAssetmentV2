@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminAreasController;
 use App\Http\Controllers\AdminCategoriesController;
 use App\Http\Controllers\AdminDepartmentsController;
+use App\Http\Controllers\AdminManufacturersController;
+use App\Http\Controllers\AdminSuppliersController;
 use App\Http\Controllers\AdminUsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,5 +43,11 @@ Route::name('admin.')->prefix('admin')->group(function() {
 
         Route::get('categories/data', [AdminCategoriesController::class, 'anyData'])->name('categories.data');
         Route::resource('categories', AdminCategoriesController::class);
+
+        Route::get('manufacturers/data', [AdminManufacturersController::class, 'anyData'])->name('manufacturers.data');
+        Route::resource('manufacturers', AdminManufacturersController::class);
+
+        Route::get('suppliers/data', [AdminSuppliersController::class, 'anyData'])->name('suppliers.data');
+        Route::resource('suppliers', AdminSuppliersController::class);
     });
 });

@@ -317,6 +317,30 @@ class CategoriesTableSeeder extends Seeder
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ),
+            37 =>
+                array (
+                    'id' => 38,
+                    'name' => 'Máy in',
+                    'type' => 'Tài Sản',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ),
+            38 =>
+                array (
+                    'id' => 39,
+                    'name' => 'Máy Fax',
+                    'type' => 'Tài Sản',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ),
+            39 =>
+                array (
+                    'id' => 40,
+                    'name' => 'Máy Scan',
+                    'type' => 'Tài Sản',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ),
         ));
     }
 }
