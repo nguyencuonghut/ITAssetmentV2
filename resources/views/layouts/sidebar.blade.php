@@ -42,6 +42,14 @@
               <p>Vị trí</p>
             </a>
           </li>
+
+          <li class="nav-header">CẤU HÌNH</li>
+          <li class="nav-item">
+            <a href="{{ route('admin.categories.index') }}" class="nav-link {{ Request::is('admin/categories*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-clipboard-list"></i>
+              <p>Danh mục</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
