@@ -139,7 +139,7 @@ class AdminEmployeesController extends Controller
 
     public function anyData()
     {
-        $employees = Employee::with('department')->select(['id', 'name', 'email', 'department_id'])->get();
+        $employees = Employee::with('department')->select(['id', 'name', 'email', 'department_id'])->orderBy('department_id')->get();
         return Datatables::of($employees)
             ->addIndexColumn()
             ->editColumn('name', function ($employees) {
