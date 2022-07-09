@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminAreasController;
+use App\Http\Controllers\AdminAssetModelsController;
 use App\Http\Controllers\AdminCategoriesController;
 use App\Http\Controllers\AdminDepartmentsController;
 use App\Http\Controllers\AdminManufacturersController;
@@ -49,5 +50,8 @@ Route::name('admin.')->prefix('admin')->group(function() {
 
         Route::get('suppliers/data', [AdminSuppliersController::class, 'anyData'])->name('suppliers.data');
         Route::resource('suppliers', AdminSuppliersController::class);
+
+        Route::get('models/data', [AdminAssetModelsController::class, 'anyData'])->name('models.data');
+        Route::resource('models', AdminAssetModelsController::class);
     });
 });

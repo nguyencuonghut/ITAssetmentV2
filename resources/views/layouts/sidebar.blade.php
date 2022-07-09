@@ -62,6 +62,12 @@
               <p>Nhà cung cấp</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.models.index') }}" class="nav-link {{ Request::is('admin/models*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-clone"></i>
+              <p>Model thiết bị</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
