@@ -1,5 +1,5 @@
 @section('title')
-{{ 'Tạo model thiết bị' }}
+{{ 'Tạo nhân viên' }}
 @endsection
 
 @push('styles')
@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Tạo model thiết bị</h1>
+                    <h1 class="m-0">Tạo nhân viên </h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <form class="form-horizontal" method="post" action="{{ url('admin/models') }}" name="add_model" id="add_model" novalidate="novalidate">{{ csrf_field() }}
+                        <form class="form-horizontal" method="post" action="{{ url('admin/employees') }}" name="add_employee" id="add_employee" novalidate="novalidate">{{ csrf_field() }}
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
@@ -43,34 +43,21 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="control-group">
-                                            <label class="control-label">Số model</label>
+                                            <label class="required-field" class="control-label">Email</label>
                                             <div class="controls">
-                                                <input type="text" class="form-control" name="model_no" id="model_no">
+                                                <input type="email" class="form-control" name="email" id="email" required="">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-12">
                                         <div class="control-group">
-                                            <label class="required-field" class="control-label">Hãng sản xuất</label>
+                                            <label class="required-field" class="control-label">Phòng ban</label>
                                             <div class="controls">
-                                                <select name="manufacturer_id" id="manufacturer_id" data-placeholder="Chọn hãng" class="form-control select2">
-                                                    <option selected="selected" disabled>-- Chọn hãng --</option>
-                                                    @foreach ($manufacturers as $item)
-                                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="control-group">
-                                            <label class="required-field" class="control-label">Chọn danh mục thiết bị</label>
-                                            <div class="controls">
-                                                <select name="category_id" id="category_id" data-placeholder="Chọn danh mục" class="form-control select2">
-                                                    <option selected="selected" disabled>-- Chọn danh mục --</option>
-                                                    @foreach ($categories as $item)
+                                                <select name="department_id" id="department_id" data-placeholder="Chọn phòng ban" class="form-control select2">
+                                                    <option selected="selected" disabled>-- Chọn phòng/ban --</option>
+                                                    @foreach ($departments as $item)
                                                         <option value="{{$item->id}}">{{$item->name}}</option>
                                                     @endforeach
                                                 </select>

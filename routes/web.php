@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminAreasController;
 use App\Http\Controllers\AdminAssetModelsController;
 use App\Http\Controllers\AdminCategoriesController;
 use App\Http\Controllers\AdminDepartmentsController;
+use App\Http\Controllers\AdminEmployeesController;
 use App\Http\Controllers\AdminManufacturersController;
 use App\Http\Controllers\AdminSuppliersController;
 use App\Http\Controllers\AdminUsersController;
@@ -53,5 +54,8 @@ Route::name('admin.')->prefix('admin')->group(function() {
 
         Route::get('models/data', [AdminAssetModelsController::class, 'anyData'])->name('models.data');
         Route::resource('models', AdminAssetModelsController::class);
+
+        Route::get('employees/data', [AdminEmployeesController::class, 'anyData'])->name('employees.data');
+        Route::resource('employees', AdminEmployeesController::class);
     });
 });

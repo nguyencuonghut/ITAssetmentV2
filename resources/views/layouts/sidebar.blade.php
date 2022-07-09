@@ -26,6 +26,12 @@
           <li class="nav-header">QUẢN TRỊ</li>
           <li class="nav-item">
             <a href="{{ route('admin.users.index') }}" class="nav-link {{ Request::is('admin/users*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-user-shield"></i>
+              <p>Admin</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.employees.index') }}" class="nav-link {{ Request::is('admin/employees*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-users"></i>
               <p>Người dùng</p>
             </a>
