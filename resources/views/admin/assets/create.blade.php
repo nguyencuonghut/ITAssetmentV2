@@ -35,7 +35,7 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="control-group">
                                             <label class="required-field" class="control-label">Trạng thái</label>
                                             <div class="controls">
@@ -51,7 +51,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="control-group">
                                             <label class="required-field" class="control-label">Model thiết bị</label>
                                             <div class="controls">
@@ -64,7 +64,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="control-group">
                                             <label class="required-field" class="control-label">Vị trí</label>
                                             <div class="controls">
@@ -77,9 +77,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-3">
                                         <div class="control-group">
                                             <label class="control-label">Số tháng bảo hành</label>
@@ -88,6 +85,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col-3">
                                         <div class="control-group">
                                             <label class="control-label">Serial</label>
@@ -115,8 +115,15 @@
                                               </div>
                                         </div>
                                     </div>
+                                    <div class="col-3">
+                                        <div class="control-group">
+                                            <label class="control-label">Ghi chú</label>
+                                            <div class="controls">
+                                                <input type="text" class="form-control" name="note" id="note" required="">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="control-group">
