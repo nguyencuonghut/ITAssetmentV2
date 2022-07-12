@@ -37,26 +37,12 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-3">
-                                        <div class="control-group">
-                                            <label class="required-field" class="control-label">Trạng thái</label>
-                                            <div class="controls">
-                                                <select name="status" id="status" data-placeholder="Chọn trạng thái" class="form-control select2">
-                                                    <option value="Đã cấp phát" {{"Đã cấp phát" == $asset->status ? 'selected' : ''}}>Đã cấp phát</option>
-                                                    <option value="Đã thu hồi" {{"Đã thu hồi" == $asset->status ? 'selected' : ''}}>Đã thu hồi</option>
-                                                    <option value="Sẵn sàng cấp phát" {{"Sẵn sàng cấp phát" == $asset->status ? 'selected' : ''}}>Sẵn sàng cấp phát</option>
-                                                    <option value="Hỏng - Không sửa được" {{"Hỏng - Không sửa được" == $asset->status ? 'selected' : ''}}>Hỏng - Không sửa được</option>
-                                                    <option value="Hỏng - Mang đi sửa" {{"Hỏng - Mang đi sửa" == $asset->status ? 'selected' : ''}}>Hỏng - Mang đi sửa</option>
-                                                    <option value="Đã thất lạc" {{"Đã thất lạc" == $asset->status ? 'selected' : ''}}>Đã thất lạc</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         <div class="control-group">
                                             <label class="required-field" class="control-label">Model thiết bị</label>
                                             <div class="controls">
                                                 <select name="model_id" id="model_id" data-placeholder="Chọn model" class="form-control select2">
+                                                    <option selected="selected" disabled>-- Chọn model --</option>
                                                     @foreach ($models as $item)
                                                     <option value="{{$item->id}}" {{$item->id == $asset->model_id ? 'selected' : ''}}>{{$item->name}}</option>
                                                     @endforeach
@@ -64,11 +50,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         <div class="control-group">
                                             <label class="required-field" class="control-label">Vị trí</label>
                                             <div class="controls">
                                                 <select name="area_id" id="area_id" data-placeholder="Chọn vị trí" class="form-control select2">
+                                                    <option selected="selected" disabled>-- Chọn vị trí --</option>
                                                     @foreach ($areas as $item)
                                                     <option value="{{$item->id}}" {{$item->id == $asset->area_id ? 'selected' : ''}}>{{$item->name}}</option>
                                                     @endforeach
@@ -76,18 +63,23 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         <div class="control-group">
-                                            <label class="control-label">Số tháng bảo hành</label>
+                                            <label class="required-field" class="control-label">Nhân viên</label>
                                             <div class="controls">
-                                                <input type="number" class="form-control" name="warranty" id="warranty" required="" value="{{$asset->warranty}}">
+                                                <select name="employee_id" id="employee_id" data-placeholder="Chọn nhân viên" class="form-control select2">
+                                                    <option selected="selected" disabled>-- Chọn nhân viên --</option>
+                                                    @foreach ($employees as $item)
+                                                    <option value="{{$item->id}}" {{$item->id == $asset->employee_id ? 'selected' : ''}}>{{$item->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         <div class="control-group">
                                             <label class="control-label">Serial</label>
                                             <div class="controls">
@@ -95,15 +87,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-3">
-                                        <div class="control-group">
-                                            <label class="control-label">Giá trị (VNĐ)</label>
-                                            <div class="controls">
-                                                <input type="number" class="form-control" name="purchase_cost" id="purchase_cost" required="" value="{{$asset->purchase_cost}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         <div class="form-group">
                                             <label class="control-label">Ngày mua</label>
                                               <div class="input-group date" id="purchasing_date" data-target-input="nearest">
@@ -114,30 +98,26 @@
                                               </div>
                                         </div>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         <div class="control-group">
-                                            <label class="control-label">Ghi chú</label>
+                                            <label class="control-label">Số tháng bảo hành</label>
                                             <div class="controls">
-                                                <input type="text" class="form-control" name="note" id="note" required="" value="{{$asset->note}}">
+                                                <input type="number" class="form-control" name="warranty" id="warranty" required="" value="{{$asset->warranty}}">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <div class="control-group">
-                                            <label class="required-field" class="control-label">Nhân viên</label>
+                                            <label class="control-label">Giá trị (VNĐ)</label>
                                             <div class="controls">
-                                                <select name="employee_id" id="employee_id" data-placeholder="Chọn nhân viên" class="form-control select2">
-                                                    @foreach ($employees as $item)
-                                                    <option value="{{$item->id}}" {{$item->id == $asset->employee_id ? 'selected' : ''}}>{{$item->email}}</option>
-                                                    @endforeach
-                                                </select>
+                                                <input type="number" class="form-control" name="purchase_cost" id="purchase_cost" required="" value="{{$asset->purchase_cost}}">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <div class="control-group">
                                             <label class="required-field" class="control-label">Nhà cung cấp</label>
                                             <div class="controls">
@@ -145,6 +125,21 @@
                                                     @foreach ($suppliers as $item)
                                                     <option value="{{$item->id}}" {{$item->id == $asset->supplier_id ? 'selected' : ''}}>{{$item->name}}</option>
                                                     @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="control-group">
+                                            <label class="required-field" class="control-label">Trạng thái</label>
+                                            <div class="controls">
+                                                <select name="status" id="status" data-placeholder="Chọn trạng thái" class="form-control select2">
+                                                    <option value="Đã cấp phát" {{"Đã cấp phát" == $asset->status ? 'selected' : ''}}>Đã cấp phát</option>
+                                                    <option value="Đã thu hồi" {{"Đã thu hồi" == $asset->status ? 'selected' : ''}}>Đã thu hồi</option>
+                                                    <option value="Sẵn sàng cấp phát" {{"Sẵn sàng cấp phát" == $asset->status ? 'selected' : ''}}>Sẵn sàng cấp phát</option>
+                                                    <option value="Hỏng - Không sửa được" {{"Hỏng - Không sửa được" == $asset->status ? 'selected' : ''}}>Hỏng - Không sửa được</option>
+                                                    <option value="Hỏng - Mang đi sửa" {{"Hỏng - Mang đi sửa" == $asset->status ? 'selected' : ''}}>Hỏng - Mang đi sửa</option>
+                                                    <option value="Đã thất lạc" {{"Đã thất lạc" == $asset->status ? 'selected' : ''}}>Đã thất lạc</option>
                                                 </select>
                                             </div>
                                         </div>

@@ -19,8 +19,7 @@ class Asset extends Model
         'warranty',
         'supplier_id',
         'purchase_cost',
-        'employee_id',
-        'note'
+        'employee_id'
     ];
 
     public function model()
@@ -41,10 +40,5 @@ class Asset extends Model
     public function supplier()
     {
         return $this->belongsTo(Supplier::class);
-    }
-
-    public function logs()
-    {
-        return $this->hasMany(ActivityLog::class);
     }
 }

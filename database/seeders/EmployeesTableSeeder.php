@@ -22,8 +22,8 @@ class EmployeesTableSeeder extends Seeder
             0 =>
                 array (
                     'id' => 1,
-                    'name' => 'IT',
-                    'email' => 'it@honghafeed.com.vn',
+                    'name' => 'Nguyễn Văn Cường',
+                    'email' => 'nguyenvancuong@honghafeed.com.vn',
                     'department_id' => 1,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -49,8 +49,8 @@ class EmployeesTableSeeder extends Seeder
             3 =>
                 array (
                     'id' => 4,
-                    'name' => 'Nguyễn Văn Cường',
-                    'email' => 'nguyenvancuong@honghafeed.com.vn',
+                    'name' => 'IT',
+                    'email' => 'it@honghafeed.com.vn',
                     'department_id' => 1,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
