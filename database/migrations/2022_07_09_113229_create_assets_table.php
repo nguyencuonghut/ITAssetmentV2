@@ -29,6 +29,7 @@ return new class extends Migration
             $table->bigInteger('purchase_cost')->unsigned()->nullable();
             $table->bigInteger('employee_id')->unsigned();
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

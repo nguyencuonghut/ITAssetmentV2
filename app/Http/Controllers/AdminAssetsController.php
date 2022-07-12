@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActivityLog;
 use App\Models\Area;
 use App\Models\Asset;
 use App\Models\AssetModel;
@@ -11,6 +12,7 @@ use Carbon\Carbon;
 use Datatables;
 use Illuminate\Database\Events\ModelsPruned;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminAssetsController extends Controller
@@ -71,17 +73,29 @@ class AdminAssetsController extends Controller
         $asset->model_id = $request->model_id;
         $asset->status = $request->status;
         $asset->area_id = $request->area_id;
-        $asset->purchasing_date = Carbon::createFromFormat('d-m-Y', $request->purchasing_date);
+        if($request->purchasing_date){
+            $asset->purchasing_date = Carbon::createFromFormat('d-m-Y', $request->purchasing_date);
+        }
         $asset->warranty = $request->warranty;
         $asset->supplier_id = $request->supplier_id;
         $asset->purchase_cost = $request->purchase_cost;
         $asset->employee_id = $request->employee_id;
+        $asset->note = $request->note;
         $asset->save();
 
         //Automatically generate the Tag based on Asset Model
         $tag = $this->setTag($request->model_id, $asset->id);
         $asset->tag = $tag;
         $asset->save();
+
+        //Create the activity logs
+        $log = new ActivityLog();
+        $log->user_id = Auth::user()->id;
+        $log->old_employee_id = 1;
+        $log->new_employee_id = $asset->employee_id;
+        $log->asset_id = $asset->id;
+        $log->status = $asset->status;
+        $log->save();
 
         Alert::toast('Tạo tài sản thành công!', 'success', 'top-right');
         return redirect()->route('admin.assets.index');
@@ -95,7 +109,9 @@ class AdminAssetsController extends Controller
      */
     public function show($id)
     {
-        return view('admin.assets.index');
+        $asset = Asset::findOrFail($id);
+        $logs = ActivityLog::where('asset_id', $id)->orderBy('id', 'desc')->get();
+        return view('admin.assets.show', ['asset' => $asset, 'logs' => $logs]);
     }
 
     /**
@@ -147,16 +163,34 @@ class AdminAssetsController extends Controller
         $request->validate($rules,$messages);
 
         $asset = Asset::findOrFail($id);
+        $old_employee_id = $asset->employee_id;
+        $old_status = $asset->status;
+
         $asset->serial = $request->serial;
         $asset->model_id = $request->model_id;
         $asset->status = $request->status;
         $asset->area_id = $request->area_id;
-        $asset->purchasing_date = Carbon::createFromFormat('d-m-Y', $request->purchasing_date);
+        if($request->purchasing_date){
+            $asset->purchasing_date = Carbon::createFromFormat('d-m-Y', $request->purchasing_date);
+        }
         $asset->warranty = $request->warranty;
         $asset->supplier_id = $request->supplier_id;
         $asset->purchase_cost = $request->purchase_cost;
         $asset->employee_id = $request->employee_id;
+        $asset->note = $request->note;
         $asset->save();
+
+        //Create the activity logs
+        if($old_status != $asset->status
+        || $old_employee_id != $asset->employee_id){
+            $log = new ActivityLog();
+            $log->user_id = Auth::user()->id;
+            $log->old_employee_id = $old_employee_id;
+            $log->new_employee_id = $asset->employee_id;
+            $log->asset_id = $asset->id;
+            $log->status = $asset->status;
+            $log->save();
+        }
 
         Alert::toast('Cập nhật thông tin thành công!', 'success', 'top-right');
         return view('admin.assets.index');
@@ -183,7 +217,7 @@ class AdminAssetsController extends Controller
         return Datatables::of($assets)
             ->addIndexColumn()
             ->editColumn('tag', function ($assets) {
-                return $assets->tag;
+                return '<a href="'.route('admin.assets.show', $assets->id).'">'.$assets->tag.'</a>';
             })
             ->editColumn('model', function ($assets) {
                 return $assets->model->category->name . ' ' . $assets->model->manufacturer->name . ' ' . $assets->model->name;
@@ -219,7 +253,7 @@ class AdminAssetsController extends Controller
                            <input type="hidden" name="_token" value="' . csrf_token(). '"></form>';
                 return $action;
             })
-            ->rawColumns(['status', 'actions'])
+            ->rawColumns(['tag', 'status', 'actions'])
             ->make(true);
     }
 
@@ -249,10 +283,25 @@ class AdminAssetsController extends Controller
         $request->validate($rules,$messages);
 
         $asset = Asset::findOrFail($id);
+        $old_employee_id = $asset->employee_id;
+        $old_status = $asset->status;
+
         $asset->status = $request->status;
         $asset->employee_id = $request->employee_id;
         $asset->area_id = $request->area_id;
         $asset->save();
+
+        //Create the activity logs
+        if($old_status != $asset->status
+        || $old_employee_id != $asset->employee_id){
+            $log = new ActivityLog();
+            $log->user_id = Auth::user()->id;
+            $log->old_employee_id = $old_employee_id;
+            $log->new_employee_id = $asset->employee_id;
+            $log->asset_id = $asset->id;
+            $log->status = $asset->status;
+            $log->save();
+        }
 
         Alert::toast('Cập nhật trạng thái thành công!', 'success', 'top-right');
         return redirect()->route('admin.assets.index');
