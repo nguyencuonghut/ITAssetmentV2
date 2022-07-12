@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminActivityLogsController;
 use App\Http\Controllers\AdminAreasController;
 use App\Http\Controllers\AdminAssetModelsController;
 use App\Http\Controllers\AdminAssetsController;
@@ -62,6 +63,5 @@ Route::name('admin.')->prefix('admin')->group(function() {
         Route::get('assets/data', [AdminAssetsController::class, 'anyData'])->name('assets.data');
         Route::resource('assets', AdminAssetsController::class);
         Route::get('assets/changeStatus/{id}', [AdminAssetsController::class, 'getChangeStatus'])->name('assets.getChangeStatus');
-        Route::patch('assets/changeStatus/{id}', [AdminAssetsController::class, 'updateStatus'])->name('assets.updateStatus');
     });
 });
