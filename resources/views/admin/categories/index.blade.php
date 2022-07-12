@@ -37,6 +37,7 @@
                                 <tr>
                                     <th>STT</th>
                                     <th>Tên</th>
+                                    <th>Mã</th>
                                     <th>Kiểu</th>
                                     <th>Thao tác</th>
                                 </tr>
@@ -83,14 +84,14 @@
                 extend: 'copy',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1]
+                    columns: [0,1,2,3]
                 }
             },
             {
                 extend: 'csv',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1]
+                    columns: [0,1,2,3]
                 }
 
             },
@@ -98,28 +99,28 @@
                 extend: 'excel',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1]
+                    columns: [0,1,2,3]
                 }
             },
             {
                 extend: 'pdf',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1]
+                    columns: [0,1,2,3]
                 }
             },
             {
                 extend: 'print',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1]
+                    columns: [0,1,2,3]
                 }
             },
             {
                 extend: 'colvis',
                 footer: true,
                 exportOptions: {
-                    columns: [0,1]
+                    columns: [0,1,2,3]
                 }
             }
         ],
@@ -128,6 +129,7 @@
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'name', name: 'name'},
+            {data: 'code', name: 'code'},
             {data: 'type', name: 'type'},
             {data: 'actions', name: 'actions', orderable: false, searchable: false},
        ]

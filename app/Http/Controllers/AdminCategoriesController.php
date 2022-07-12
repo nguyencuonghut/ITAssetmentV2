@@ -41,18 +41,21 @@ class AdminCategoriesController extends Controller
         $rules = [
             'name' => 'required|max:255|unique:categories',
             'type' => 'required',
+            'code' => 'required'
         ];
         $messages = [
             'name.required' => 'Bạn phải nhập tên.',
             'name.max' => 'Tên dài quá 255 ký tự.',
             'name.unique' => 'Tên đã tồn tại.',
-            'type.required' => 'Bạn phải chọn kiểu.'
+            'type.required' => 'Bạn phải chọn kiểu.',
+            'code.required' => 'Bạn phải nhập mã.',
         ];
         $request->validate($rules,$messages);
 
         $category = new Category();
         $category->name = $request->name;
         $category->type = $request->type;
+        $category->code = $request->code;
         $category->save();
 
         Alert::toast('Tạo danh mục thiết bị thành công!', 'success', 'top-right');
@@ -94,16 +97,19 @@ class AdminCategoriesController extends Controller
         $rules = [
             'name' => 'required|max:255',
             'type' => 'required',
+            'code' => 'required',
         ];
         $messages = [
             'name.required' => 'Bạn phải nhập tên.',
             'name.max' => 'Tên dài quá 255 ký tự.',
-            'type.required' => 'Bạn phải nhập kiểu.'
+            'type.required' => 'Bạn phải nhập kiểu.',
+            'code.required' => 'Bạn phải nhập mã.'
         ];
         $request->validate($rules,$messages);
         $category = Category::findOrFail($id);
         $category->name = $request->name;
         $category->type = $request->type;
+        $category->code = $request->code;
         $category->save();
 
         Alert::toast('Cập nhật thông tin thành công!', 'success', 'top-right');
@@ -127,11 +133,14 @@ class AdminCategoriesController extends Controller
 
     public function anyData()
     {
-        $categories = Category::select(['id', 'name', 'type'])->orderBy('type')->get();
+        $categories = Category::select(['id', 'name', 'type', 'code'])->orderBy('type')->get();
         return Datatables::of($categories)
             ->addIndexColumn()
             ->editColumn('name', function ($categories) {
                 return $categories->name;
+            })
+            ->editColumn('code', function ($categories) {
+                return $categories->code;
             })
             ->editColumn('type', function ($categories) {
                 return $categories->type;

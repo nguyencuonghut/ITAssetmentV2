@@ -45,7 +45,16 @@ class EmployeesTableSeeder extends Seeder
                     'department_id' => 6,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
-                )
+                ),
+            3 =>
+                array (
+                    'id' => 4,
+                    'name' => 'IT',
+                    'email' => 'it@honghafeed.com.vn',
+                    'department_id' => 1,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ),
         ));
     }
 }

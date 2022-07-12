@@ -14,4 +14,9 @@ class Supplier extends Model
         'address',
         'mobile'
     ];
+
+    public function assets()
+    {
+        return $this->hasMany(Asset::class);
+    }
 }

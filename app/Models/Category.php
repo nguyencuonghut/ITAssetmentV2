@@ -11,7 +11,8 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'type'
+        'type',
+        'code'
     ];
 
     public function asset_models()

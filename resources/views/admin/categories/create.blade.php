@@ -41,16 +41,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-3">
                                         <div class="control-group">
                                             <label class="required-field" class="control-label">Kiểu</label>
                                             <div class="controls">
                                                 <select name="type" id="type" data-placeholder="Chọn kiểu" class="form-control select2">
+                                                    <option selected="selected" disabled>-- Chọn kiểu --</option>
                                                     <option value="Tài Sản">Tài Sản</option>
                                                     <option value="Phụ Kiện">Phụ Kiện</option>
                                                     <option value="Linh Kiện">Linh Kiện</option>
                                                     <option value="Bản Quyền">Bản Quyền</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="control-group">
+                                            <label class="required-field" class="control-label">Mã</label>
+                                            <div class="controls">
+                                                <input type="text" class="form-control" name="code" id="code" required="">
                                             </div>
                                         </div>
                                     </div>

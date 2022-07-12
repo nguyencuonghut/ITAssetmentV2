@@ -234,6 +234,13 @@ class AreasTableSeeder extends Seeder
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ),
+            35 =>
+                array (
+                    'id' => 36,
+                    'name' => 'Kho IT',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ),
         ));
     }
 }

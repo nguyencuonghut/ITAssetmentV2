@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminAreasController;
 use App\Http\Controllers\AdminAssetModelsController;
+use App\Http\Controllers\AdminAssetsController;
 use App\Http\Controllers\AdminCategoriesController;
 use App\Http\Controllers\AdminDepartmentsController;
 use App\Http\Controllers\AdminEmployeesController;
@@ -57,5 +58,10 @@ Route::name('admin.')->prefix('admin')->group(function() {
 
         Route::get('employees/data', [AdminEmployeesController::class, 'anyData'])->name('employees.data');
         Route::resource('employees', AdminEmployeesController::class);
+
+        Route::get('assets/data', [AdminAssetsController::class, 'anyData'])->name('assets.data');
+        Route::resource('assets', AdminAssetsController::class);
+        Route::get('assets/changeStatus/{id}', [AdminAssetsController::class, 'getChangeStatus'])->name('assets.getChangeStatus');
+        Route::patch('assets/changeStatus/{id}', [AdminAssetsController::class, 'updateStatus'])->name('assets.updateStatus');
     });
 });
