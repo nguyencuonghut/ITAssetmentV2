@@ -10,7 +10,9 @@ use App\Http\Controllers\AdminEmployeesController;
 use App\Http\Controllers\AdminManufacturersController;
 use App\Http\Controllers\AdminSuppliersController;
 use App\Http\Controllers\AdminUsersController;
+use App\Http\Controllers\UserActivityLogsController;
 use App\Http\Controllers\UserAssetsController;
+use App\Http\Controllers\UserHomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,11 +25,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('home');
-});
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -71,4 +68,8 @@ Route::name('admin.')->prefix('admin')->group(function() {
 Route::get('assets/data', [UserAssetsController::class, 'anyData'])->name('assets.data');
 Route::get('assets/{id}', [UserAssetsController::class, 'show'])->name('assets.show');
 Route::get('assets', [UserAssetsController::class, 'index'])->name('assets.index');
+
+Route::get('logs/data', [UserActivityLogsController::class, 'anyData'])->name('logs.data');
+
+Route::get('/', [UserHomeController::class, 'home'])->name('home');
 

@@ -376,7 +376,7 @@ class CategoriesTableSeeder extends Seeder
                 array (
                     'id' => 40,
                     'name' => 'Máy Scan',
-                    'code' => 'SCANER',
+                    'code' => 'SCANNER',
                     'type' => 'Tài Sản',
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
