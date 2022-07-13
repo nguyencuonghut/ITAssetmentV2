@@ -1,5 +1,5 @@
 @section('title')
-{{ 'Tài sản' }}
+{{ 'Tất cả tài sản' }}
 @endsection
 
 @push('styles')
@@ -31,18 +31,16 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ route('admin.assets.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Tạo mới</a>
                             <table id="assets-table" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
                                     <th style="width: 5%;">#</th>
                                     <th>Tag</th>
-                                    <th>Thể loại</th>
+                                    <th>Danh mục</th>
                                     <th>Model</th>
                                     <th>Vị trí</th>
                                     <th>Nhân viên</th>
                                     <th>Trạng thái</th>
-                                    <th style="width: 16%;">Thao tác</th>
                                 </tr>
                                 </thead>
                             </table>
@@ -128,7 +126,7 @@
             }
         ],
         dom: 'Blfrtip',
-        ajax: ' {!! route('admin.assets.data') !!}',
+        ajax: ' {!! route('assets.data') !!}',
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'tag', name: 'tag'},
@@ -137,7 +135,6 @@
             {data: 'area', name: 'area'},
             {data: 'employee', name: 'employee'},
             {data: 'status', name: 'status'},
-            {data: 'actions', name: 'actions', orderable: false, searchable: false},
        ]
       }).buttons().container().appendTo('#assets-table_wrapper .col-md-6:eq(0)');
     });

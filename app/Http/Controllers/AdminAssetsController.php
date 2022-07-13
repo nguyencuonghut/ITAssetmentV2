@@ -219,8 +219,11 @@ class AdminAssetsController extends Controller
             ->editColumn('tag', function ($assets) {
                 return '<a href="'.route('admin.assets.show', $assets->id).'">'.$assets->tag.'</a>';
             })
+            ->editColumn('category', function ($assets) {
+                return $assets->model->category->name;
+            })
             ->editColumn('model', function ($assets) {
-                return $assets->model->category->name . ' ' . $assets->model->manufacturer->name . ' ' . $assets->model->name;
+                return $assets->model->manufacturer->name . ' ' . $assets->model->name;
             })
             ->editColumn('area', function ($assets) {
                 return $assets->area->name;

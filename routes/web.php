@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminEmployeesController;
 use App\Http\Controllers\AdminManufacturersController;
 use App\Http\Controllers\AdminSuppliersController;
 use App\Http\Controllers\AdminUsersController;
+use App\Http\Controllers\UserAssetsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,3 +67,8 @@ Route::name('admin.')->prefix('admin')->group(function() {
         Route::patch('assets/changeStatus/{id}', [AdminAssetsController::class, 'updateStatus'])->name('assets.updateStatus');
     });
 });
+
+Route::get('assets/data', [UserAssetsController::class, 'anyData'])->name('assets.data');
+Route::get('assets/{id}', [UserAssetsController::class, 'show'])->name('assets.show');
+Route::get('assets', [UserAssetsController::class, 'index'])->name('assets.index');
+

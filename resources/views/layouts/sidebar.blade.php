@@ -22,6 +22,12 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('assets.index') }}" class="nav-link {{ Request::is('assets*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-barcode"></i>
+              <p>Tài sản</p>
+            </a>
+          </li>
 
           <li class="nav-header">QUẢN TRỊ</li>
           <li class="nav-item">
