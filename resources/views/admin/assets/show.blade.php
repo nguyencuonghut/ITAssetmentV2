@@ -41,15 +41,15 @@
                                 @if($asset->status == 'Đã cấp phát')
                                     <div class="col-6"><span class="badge badge-success">{{$asset->status}}</span></div>
                                 @elseif($asset->status == 'Đã thu hồi')
-                                    <div class="col-6"><span class="badge badge-success">{{$asset->status}}</span></div>
+                                    <div class="col-6"><span class="badge badge-danger">{{$asset->status}}</span></div>
                                 @elseif($asset->status == 'Sẵn sàng cấp phát')
-                                    <div class="col-6"><span class="badge badge-success">{{$asset->status}}</span></div>
+                                    <div class="col-6"><span class="badge badge-primary">{{$asset->status}}</span></div>
                                 @elseif($asset->status == 'Hỏng - Không sửa được')
-                                    <div class="col-6"><span class="badge badge-success">{{$asset->status}}</span></div>
+                                    <div class="col-6"><span class="badge badge-warning">{{$asset->status}}</span></div>
                                 @elseif($asset->status == 'Hỏng - Mang đi sửa')
-                                    <div class="col-6"><span class="badge badge-success">{{$asset->status}}</span></div>
+                                    <div class="col-6"><span class="badge badge-info">{{$asset->status}}</span></div>
                                 @elseif($asset->status == 'Đã thất lạc')
-                                    <div class="col-6"><span class="badge badge-success">{{$asset->status}}</span></div>
+                                    <div class="col-6"><span class="badge badge-dark">{{$asset->status}}</span></div>
                                 @endif
                             </div>
                             <div class="row">

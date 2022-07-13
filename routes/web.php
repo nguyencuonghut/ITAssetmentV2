@@ -63,5 +63,6 @@ Route::name('admin.')->prefix('admin')->group(function() {
         Route::get('assets/data', [AdminAssetsController::class, 'anyData'])->name('assets.data');
         Route::resource('assets', AdminAssetsController::class);
         Route::get('assets/changeStatus/{id}', [AdminAssetsController::class, 'getChangeStatus'])->name('assets.getChangeStatus');
+        Route::patch('assets/changeStatus/{id}', [AdminAssetsController::class, 'updateStatus'])->name('assets.updateStatus');
     });
 });
