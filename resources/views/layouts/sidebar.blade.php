@@ -4,7 +4,13 @@
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
       <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Quản lý thiết bị CNTT</span>
+      <span class="brand-text font-weight-light">
+        @auth
+        {{Auth::user()->name}}
+        @else
+        Quản lý thiết bị CNTT
+        @endauth
+    </span>
     </a>
 
     <!-- Sidebar -->
@@ -29,6 +35,7 @@
             </a>
           </li>
 
+          @auth
           <li class="nav-header">QUẢN TRỊ</li>
           <li class="nav-item">
             <a href="{{ route('admin.assets.index') }}" class="nav-link {{ Request::is('admin/assets*') ? 'active' : '' }}">
@@ -86,6 +93,7 @@
               <p>Model thiết bị</p>
             </a>
           </li>
+          @endauth
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
