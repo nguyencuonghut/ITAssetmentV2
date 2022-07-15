@@ -68,6 +68,7 @@ Route::name('admin.')->prefix('admin')->group(function() {
 Route::get('assets/data', [UserAssetsController::class, 'anyData'])->name('assets.data');
 Route::get('assets/{id}', [UserAssetsController::class, 'show'])->name('assets.show');
 Route::get('assets', [UserAssetsController::class, 'index'])->name('assets.index');
+Route::get('assets/createQR/{id}', [UserAssetsController::class, 'createQR'])->name('assets.createQR');
 
 Route::get('logs/data', [UserActivityLogsController::class, 'anyData'])->name('logs.data');
 

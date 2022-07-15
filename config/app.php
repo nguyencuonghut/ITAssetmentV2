@@ -198,6 +198,7 @@ return [
         App\Providers\JetstreamServiceProvider::class,
         yajra\Datatables\DatatablesServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
     ],
 
     /*
@@ -214,6 +215,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         'Datatables' => yajra\Datatables\Datatables::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
     ])->toArray(),
 
 ];

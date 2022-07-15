@@ -70,7 +70,9 @@
                             </div>
                             <div class="row">
                                 <div class="col-6"><strong>Ngày mua</strong></div>
+                                @if($asset->purchasing_date)
                                 <div class="col-6">{{date('d-m-Y', strtotime($asset->purchasing_date))}}</div>
+                                @endif
                             </div>
                             <div class="row">
                                 <div class="col-6"><strong>Số tháng bảo hành</strong></div>
@@ -91,6 +93,14 @@
                             <div class="row">
                                 <div class="col-6"><strong>Vị trí</strong></div>
                                 <div class="col-6">{{$asset->area->name}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6"><strong>Nhãn</strong></div>
+                                <div class="col-6">
+                                    <a href="{{route('assets.createQR', $asset->id)}}">
+                                        <button class="btn btn-xs btn-secondary"><i class="fas fa-barcode"> Tạo mã</i></button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

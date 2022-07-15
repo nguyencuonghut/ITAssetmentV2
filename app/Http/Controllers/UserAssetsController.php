@@ -6,6 +6,7 @@ use App\Models\ActivityLog;
 use App\Models\Asset;
 use Illuminate\Http\Request;
 use Datatables;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class UserAssetsController extends Controller
 {
@@ -59,5 +60,15 @@ class UserAssetsController extends Controller
         $asset = Asset::findOrFail($id);
         $logs = ActivityLog::where('asset_id', $id)->orderBy('id', 'desc')->get();
         return view('user.assets.show', ['asset' => $asset, 'logs' => $logs]);
+    }
+
+    public function createQR($id)
+    {
+        $asset = Asset::findOrFail($id);
+        QrCode::size(500)
+            ->format('png')
+            ->generate('http://localhost:8000/assets/' . $id, public_path('images/' . 'QR-' . $asset->tag . '.png'));
+
+        return view('user.assets.qrcode', ['asset' => $asset]);
     }
 }
